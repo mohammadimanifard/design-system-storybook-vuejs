@@ -1,5 +1,5 @@
-import { action, decorate } from "@storybook/addon-actions";
-import { linkTo} from '@storybook/addon-links';
+import { action } from "@storybook/addon-actions";
+import { linkTo } from '@storybook/addon-links';
 import {
   withKnobs,
   text,
@@ -9,17 +9,19 @@ import {
   color
 } from "@storybook/addon-knobs";
 
+import MDX from '@/stories/button.mdx'
 import Button from '@/components/Button'
+import Center from '@/decorators/Center'
 
 export default {
   title: 'Components|button',
   component: Button,
   decorators: [withKnobs],
+  parameters: { docs: { page: MDX } }
 };
 
 export const btnDefault = () => ({
-  template:
-    '<custom-button>Click Me!</custom-button>'
+  template: '<custom-button>Click Me!</custom-button>'
 });
 
 export const btnAction = () => ({
@@ -66,4 +68,10 @@ export const btnLinkTo = () => ({
     '<custom-button @click="handleClick" rounded>Go to rounded Button</custom-button>',
   methods: {
     handleClick: linkTo("Components|button")
-  }});
+  }
+});
+
+export const btnDefaultDecorator = () => ({
+  template:
+    '<Center><custom-button>Click Me!</custom-button></Center>'
+});

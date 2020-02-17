@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   stories: ['../src/stories/**/*.stories.js'],
@@ -30,7 +31,8 @@ module.exports = {
       ...config.resolve.alias,
       "@": path.resolve(__dirname, "../src")
     };
-    return config;
+    config.plugins.push(new CleanWebpackPlugin());
 
+    return config;
   },
 };
